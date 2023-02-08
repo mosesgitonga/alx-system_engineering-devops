@@ -1,0 +1,2 @@
+#!/bin/bash
+mv -un [[:upper:]]* /tmp/u
