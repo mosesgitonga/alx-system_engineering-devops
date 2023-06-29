@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+a="Best School"
+i=1
+while [ $i -le 10 ]
+do
+	echo "$a"
+	i=$((i + 1))
+done
