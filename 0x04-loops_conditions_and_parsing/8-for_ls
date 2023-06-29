@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+#listing content of pwd
+
+for elem in *;
+do
+	if [ -f "$elem" ] && [[ "$elem" != .* ]];
+	then
+		name_without_dash="$elem"
+		echo "$name_without_dash"
+	fi
+done
