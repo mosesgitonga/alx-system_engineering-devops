@@ -7,7 +7,7 @@ while [ $i -le 11 ]
 do
 	if [ $i -eq 10 ]
 	then
-		echo "hi"
+		echo "Hi"
 	else
 		echo "$a"
 	fi
