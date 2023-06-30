@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#list bash pids processes
+# shellcheck disable=SC2009
+
+ps aux | grep bash | grep -i bash
