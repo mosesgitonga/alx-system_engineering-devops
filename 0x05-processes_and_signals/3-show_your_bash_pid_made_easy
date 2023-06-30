@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#list pid to do wth name bash
+
+pids=$(pgrep bash)
+for pid in $pids
+do
+	echo "$pid bash"
+done
