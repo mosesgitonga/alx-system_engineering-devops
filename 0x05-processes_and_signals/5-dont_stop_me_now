@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# killing a live process
+
+pid=$(lsof -t /alx-system_engineering-devops/0x05-processes_and_signals/4-to_infinity_and_beyond)
+kill "$pid"
