@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+#ping google
+
+arg1="$1"
+
+if [ -n "$arg1" ]
+then
+	ping -c 5 "$arg1"
+else
+	echo "Usage: 5-is_the_host_on_the_network {IP_ADDRESS}"
+fi
