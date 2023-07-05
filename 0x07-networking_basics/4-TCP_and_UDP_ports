@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#show sockets with pid and names of processes
+
+sudo netstat -tulnp
