@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
-#create a ssh key
+#creating an ssh key
+
 ssh-keygen -t rsa -b 4096 -f ~/alx/alx-system_engineering-devops/0x0B-ssh/school -N 'betty'
