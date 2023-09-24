@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 #creating an ssh key
 
-ssh-keygen -b 4096 -f ~/alx/alx-system_engineering-devops/0x0B-ssh/school -N 'betty'
+ssh-keygen -t rsa -b 4096 -f ~/alx/alx-system_engineering-devops/0x0B-ssh/school -N 'betty'
