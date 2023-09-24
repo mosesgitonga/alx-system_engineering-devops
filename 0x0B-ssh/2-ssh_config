@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#local configuration file fo alx server connection
+
+Host *
+    HostName 54.237.36.156
+    User ubuntu
+    PasswordAuthentication no
+    IdentityFle ~/.ssh/school
