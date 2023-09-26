@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#script to install nginix and litsen to port 80
+
+sudo apt update
+sudo apt-get -y install nginix
+service nginix start
+sudo sh -c 'echo "HelloWorld!" > /var/www/html/index.nginix-debian.html'
+service nginix restart
