@@ -1,8 +1,24 @@
 #!/usr/bin/env bash
-# Bash script to Install nginx web server with custom header
+#configuring web-02 to have an http header
 
-sudo apt-get update -y
-sudo apt-get install nginx -y
-header="\\\tadd_header X-Served-By $HOSTNAME;\n"
-sudo sed -i "38i $header" /etc/nginx/sites-available/default
+sudo apt update
+sudo apt install nginx -y
+
+#creating an index page
+echo "Hello world!" | sudo tee /var/www/html/index.html
+#performing redirection
+new_str="server_name _;\n\trewrite ^\/redirect_me https:\/\/github.com\/mosesgitonga permanent"
+sudo sed -i "s/server_name _;/$new_str" /etc/nginx/sites-enabled/default
+
+#creating custom err page
+echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html
+new_string="listen 80 default_server;\n\terror_page 404 \/404.html;\n\tlocation = \/404.html {\n\t\troot \/var\/www\/html;\n\t\tinternal;\n\t}"
+sudo sed -i "s/listen 80 default_server;/$new_string/" /etc/nginx/sites-enabled/default
+
+#custom http header
+sudo sed -i "/server_name _/a add_header X-Served-By $HOSTNAME;" /etc/nginx/sites-enabled/default
+
+#test for syntax errs
+sudo nginx -t
+
 sudo service nginx restart
