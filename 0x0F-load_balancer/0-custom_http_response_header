@@ -7,16 +7,16 @@ sudo apt install nginx -y
 #creating an index page
 echo "Hello world!" | sudo tee /var/www/html/index.html
 #performing redirection
-new_str="server_name _;\n\trewrite ^\/redirect_me https:\/\/github.com\/mosesgitonga"
-sudo sed -i "/server_name _;/$new_str" /etc/default/nginx/sites-enabled/default
+new_str="server_name _;\n\trewrite ^\/redirect_me https:\/\/github.com\/mosesgitonga permanent"
+sudo sed -i "/server_name _;/$new_str" /etc/nginx/sites-enabled/default
 
 #creating custom err page
-echo 'Ceci n'est pas une page' | sudo tee /var/www/html/404.html;'
+echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html
 
 #custom http header
 sudo sed -i "server_name _;/a add_header X-Served-By $HOSTNAME;" /etc/nginx/sites-enabled/default
 
 #test for syntax errs
-sudo -nginx -t
+sudo nginx -t
 
 sudo service nginx restart
