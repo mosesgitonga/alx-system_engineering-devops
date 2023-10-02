@@ -8,7 +8,7 @@ sudo apt install nginx -y
 echo "Hello world!" | sudo tee /var/www/html/index.html
 #performing redirection
 new_str="server_name _;\n\trewrite ^\/redirect_me https:\/\/github.com\/mosesgitonga permanent"
-sudo sed -i "/server_name _;/$new_str" /etc/nginx/sites-enabled/default
+sudo sed -i "s/server_name _;/$new_str" /etc/nginx/sites-enabled/default
 
 #creating custom err page
 echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html
