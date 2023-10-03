@@ -11,12 +11,12 @@ server_config=\
 frontend my_frontend
     bind *:80
     mode http
-    default_backend root47_backend
+    default_backend my_backend
 
 backend my_backend
     balance roundrobin
-    server 232169-web-01 54.237.36.156 check
-    server 232169-web-02 18.206.207.239 check
+    server 232169-web-01 54.237.36.156 check port 80
+    server 232169-web-02 18.206.207.239 check port 80
 "
 #appending to haproxy.cfg
 echo "$server_config" | sudo tee -a /etc/haproxy/haproxy.cfg
@@ -24,7 +24,7 @@ echo "$server_config" | sudo tee -a /etc/haproxy/haproxy.cfg
 #enable haproxy to be started by init
 echo "ENABLED=1" | sudo tee -a /etc/default/haproxy
 
-#testing haproxy
+#testing haproxy cofiguration file
 sudo haproxy -c -f /etc/haproxy/haproxy.cfg
 
 #restarting haproxy
