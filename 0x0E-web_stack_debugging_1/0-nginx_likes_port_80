@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
 #debugging nginx which has been configured wrongly
-nginx_config_file="/etc/nginx/sites-enabled/default"
+nginx_config_file='/etc/nginx/sites-enabled/default'
 
-initial_port="8080"
-new_port="80"
+initial_port='8080'
+new_port='80'
 
 #ipv4 port configuration to litsen to new_port
-sudo sed -i "s/listen $initial_port default_server;/listen $new_port default_server;/" "$nginx_config_file"
+sudo sed -i 's/listen $initial_port default_server;/listen $new_port default_server;/' '$nginx_config_file'
 
 #ipv6 port configuration to litsen to new port
-sudo sed -i "s/listen \[::\]:$initial_port default_server ipv6only=on;/listen [::]:$new_port default_server ipv6only=on;/" "$nginx_config_file"
+sudo sed -i 's/listen [::]:$initial_port default_server ipv6only=on;listen [::]:$new_port default_server ipv6only=on;' '$nginx_config_file'
 
 #test for suntax errors in nginx configuration
 sudo nginx -t
