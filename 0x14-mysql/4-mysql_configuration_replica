@@ -24,7 +24,21 @@
 !includedir /etc/mysql/mysql.conf.d/
 
 [mysqld]
+
+pid-file	= /var/run/mysqld/mysqld.pid
+socket		= /var/run/mysqld/mysqld.sock
+datadir		= /var/lib/mysql
+log-error	= /var/log/mysql/error.log
+
 server-id = 2 #ensure a unique id for replica (different from primary)
 log_bin = /var/log/mysql/mysql-bin.log #location for binary log file
 relay_log = /var/log/mysql/mysql-relay-bin.log #location for relay log file
 replicate-do-db = tyrell_corp #database replica
+
+# setting location of the replica's relay log file
+relay-log = /var/log/mysql/mysql-relay-bin.log
+
+bind-address = 127.0.0.1
+
+# name of database to replicate
+binlog_do_db    = tyrell_corp
