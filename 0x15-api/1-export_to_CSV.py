@@ -22,7 +22,7 @@ if __name__ == '__main__':
 
     done_tasks = []
     num_of_done_tasks = 0
-    
     with open('{}.csv'.format(employeeID), 'w') as file:
         for task in tasks:
-            file.write('"{}","{}","{}","{}"\n'.format(employeeID, username, task.get('completed'), task.get('title')))
+            file.write('"{}","{}","{}","{}"\n'.format(
+                employeeID, username, task.get('completed'), task.get('title')))
