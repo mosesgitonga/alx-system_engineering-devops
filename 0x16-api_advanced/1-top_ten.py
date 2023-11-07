@@ -6,6 +6,9 @@ import requests
 
 
 def top_ten(subreddit):
+    """
+    find hot posts
+    """
     if subreddit is None or not isinstance(subreddit, str):
         print("None")
 
