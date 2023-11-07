@@ -4,6 +4,7 @@ find top 10 hot posts
 """
 import requests
 
+
 def top_ten(subreddit):
     if subreddit is None or not isinstance(subreddit, str):
         print("None")
@@ -12,7 +13,6 @@ def top_ten(subreddit):
     url = "https://www.reddit.com/r/{}/top.json?limit=10".format(subreddit)
 
     response = requests.get(url, headers=user_agent)
-   
     res = response.json()
     try:
         res = res.get('data')
@@ -22,4 +22,3 @@ def top_ten(subreddit):
 
     except Exception:
         print('None')
-    
