@@ -12,7 +12,7 @@ def number_of_subscribers(subreddit):
     find num of suscribers
     """
     if subreddit is None or not isinstance(subreddit, str):
-        print('s')
+       
         return 0
 
     user_agent = {"user-agent": "O1UydnAcwk03Z2sAuoef8g"}
