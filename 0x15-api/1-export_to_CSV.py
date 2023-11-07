@@ -5,17 +5,15 @@ employee ID, returns information about his/her TO DO list progress.
 """
 if __name__ == '__main__':
     import requests
-    response = requests.get('https://jsonplaceholder.typicode.com/todos/1')
-    data = response.json()
-    print(data)
-
     import sys
 
     employeeID = sys.argv[1]
 
     base_url = 'https://jsonplaceholder.typicode.com/users'
+    response = requests.get(base_url)
     url = base_url + '/' + employeeID
     response = requests.get(url)
+    username = response.json().get('username')
     employeeName = response.json().get('name')
 
     todo_url = url + '/todos'
@@ -24,15 +22,10 @@ if __name__ == '__main__':
 
     done_tasks = []
     num_of_done_tasks = 0
-
-    for task in tasks:
-        if task.get('completed'):
-            done_tasks.append(task)
-            num_of_done_tasks += 1
-    print('Employee {} is done with tasks({}/{}):'.format(employeeName, num_of_done_tasks,len(tasks)))
-    print('Employee {} is done with tasks({}/{}):'.format(
-        employeeName, num_of_done_tasks, len(tasks)
-        ))
-
-    for task in done_tasks:
-        print('\t {}'.format(task.get('title')))
+    with open('{}.csv'.format(employeeID), 'w') as file:
+        for task in tasks:
+            file.write('"{}","{}","{}","{}"\n'.format(
+                employeeID,
+                username,
+                task.get('completed'),
+                task.get('title')))
