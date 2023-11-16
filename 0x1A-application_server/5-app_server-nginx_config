@@ -55,7 +55,7 @@ server {
    server_name web-01.root47.tech;
 
    location /static {
-      alias ~/AirBnB_clone_v4/web_dynamic/static
+      root ~/AirBnB_clone_v4/web_dynamic/static
    }    
   
    location / {
